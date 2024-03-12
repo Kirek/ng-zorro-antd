@@ -72,13 +72,14 @@ export class DateHelperByDateFns extends DateHelperService {
    * @param formatStr format string
    */
   format(date: Date, formatStr: string): string {
-    return date ? fnsFormat(date, formatStr, { locale: this.i18n.getDateLocale() }) : '';
+    return date ? fnsFormat(date, formatStr, { locale: this.i18n.getDateLocale(), useAdditionalWeekYearTokens: true }) : '';
   }
 
   parseDate(text: string, formatStr: string): Date {
     return fnsParse(text, formatStr, new Date(), {
       locale: this.i18n.getDateLocale(),
-      weekStartsOn: this.getFirstDayOfWeek()
+      weekStartsOn: this.getFirstDayOfWeek(),
+      useAdditionalWeekYearTokens: true
     });
   }
 
